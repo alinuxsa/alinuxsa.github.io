@@ -1,42 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="shortcut icon" href="yacd.ico">
-  <link rel="icon" type="image/png" sizes="64x64" href="yacd-64.png">
-  <link rel="icon" type="image/png" sizes="128x128" href="yacd-128.png">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name=viewport content="width=device-width, initial-scale=1">
-  <meta name="application-name" content="yacd">
-  <meta name="description" content="Yet Another Clash Dashboard">
-  <meta name="theme-color" content="#202020">
-  <title>yacd - Yet Another Clash Dashboard</title>
-  <link rel="prefetch" href="https://cdn.jsdelivr.net/npm/@hsjs/fonts@0.0.1/robotomono/v5/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2">
-  <meta property="og:image" content="https://user-images.githubusercontent.com/1166872/47304841-536f3d80-d65a-11e8-8908-1917127dafc5.png">
-  <meta property="og:site_name" content="yacd">
-  <meta property="og:type" content="object">
-  <meta property="og:title" content="yacd">
-  <meta property="og:url" content="http://yacd.haishan.me">
-  <meta property="og:description" content="Yet Another Clash Dashboard">
+	<!-- Required -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Encode text into qr code easily using the tool by @misircoder</title>
+	<meta name="description" content="Create qr code online just by typing it. It's free and open source">
+	<meta name="theme-color" content="#1C1C1C">
+	<link rel="stylesheet" type="text/css" href="assets/style.css?v=1.2">
+	<link rel="shortcut icon" href="assets/icon-192.png" type="image/png">
 
-  
-  <link href="vendors~app.a7047246c8218ef73b5e.css" rel="stylesheet">
-  
-  <link href="app.45410d6bfda3572dd740.css" rel="stylesheet">
-  
+	<!-- Social Media -->
+	<meta property="og:title" name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@misirjafarov">
+	<meta name="twitter:creator" content="@misirjafarov">
+	<meta name="twitter:title" content="Encode text into qr code easily using the tool by @misircoder">
+	<meta property="og:description" name="twitter:description" content="Create qr code online just by typing it. It's free and open source">
+	<meta property="og:image" name="twitter:image" content="image.png">
+	<meta property="og:type" content="website">
+	<meta property="og:image:type" content="image/png">
+	<meta property="og:image:width" content="819">
+	<meta property="og:image:height" content="460">
 
+	<!-- PWA -->
+	<link rel="manifest" href="manifest.json">
+</head>
 <body>
-  <div id="app"></div>
+	<div class="content">
+		<div id="qrcode"></div>
+		<button class="top-btn" id="logo">QR.MISR.XYZ</button>
+		<button class="top-btn" id="download">Download</button>
+		<a class="top-btn" id="github" target="_blank" href="https://github.com/misircoder/qr">GitHub</a>
+	</div>
+	<input id="url" autocomplete="off" placeholder="enter text here">
+	<a href="https://chrome.google.com/webstore/detail/justqr/jmlpladggaonhfcfmmagpfbfddijpfbl" target="_blank" class="getit chrome">
+		<img src="assets/chrome-badge.png" alt="Chrome Web Store badge">
+	</a>
+	<i id="credits">created by <a href="https://github.com/misircoder/" target="_blank">@misircoder</a>.</i>
+	<script type="text/javascript" src="assets/qrcode.min.js"></script>
+	<script type="text/javascript">
+		!function(d,q,$,h){
+			const def = 'https://misir.xyz';
+			const gen = function(v) {
+				d.querySelectorAll('#qrcode>*').forEach(function(e){ e.remove(); });
+				new QRCode($('qrcode'), v||def);
+			};
 
-  
-  <script src="runtime~app.568f07ca7194bfece9df.js" type="text/javascript"></script>
-  
-  <script src="react~app.2889399d0f29b961e8c2.js" type="text/javascript"></script>
-  
-  <script src="vendors~app.9de43c784708929e7967.js" type="text/javascript"></script>
-  
-  <script src="app.4a29536209ddaa60b703.js" type="text/javascript"></script>
-  
+			$('url').addEventListener('keyup', function(ev) {
+				gen(ev.target.value);
+				location.hash = '#text=' + encodeURIComponent(ev.target.value);
+			});
+			$('download').addEventListener('click', function() {
+				var i = document.querySelector('#qrcode img'),
+					a = document.createElement('a');
+				a.href = img.getAttribute('src');
+				a.download = 'qrcode-mirirxyz.png';
+				document.body.appendChild(a);
+				a.click();
+				a.remove();
+			});
 
+			if (h.indexOf('#text=') == 0) gen($('url').value = decodeURIComponent(h.substring(6)));
+			else gen(def);
+		}(document, QRCode, function(a){ return document.getElementById(a); }, location.hash);
+
+		if ('serviceWorker' in navigator) window.addEventListener('load', function() { navigator.serviceWorker.register('/sw.js'); });
+	</script>
 </body>
 </html>
