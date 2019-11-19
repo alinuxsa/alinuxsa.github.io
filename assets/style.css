@@ -7,11 +7,11 @@
     margin-right: auto;
     margin-left: auto;
     border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.57) 0px 5px 8px 0px;
+    box-shadow: rgba(186, 41, 41, 0) 0px 5px 8px 0px;
 }
 
 body {
-    background: #1d1d1d;
+    background: #242526;
     margin: 0;
 }
 
@@ -36,7 +36,7 @@ input#url {
 
 i#credits {
     color: #ccc;
-    display: block;
+    display: none;
     margin-top: 100px;
     font-family: monospace;
     text-align: center;
@@ -45,9 +45,11 @@ i#credits {
 
 i#credits>a {
     color: #757575 !important;
+    display:none;
 }
 
 .top-btn {
+    display:none;
     position: fixed;
     top: 30px;
     padding: 8px 15px;
@@ -96,6 +98,7 @@ i#credits>a {
         bottom: 20px;
     }
     .getit>img {
+        display:none;
         width: 200px;
     }
 }
